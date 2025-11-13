@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify, send_from_directory
 import util
+from flask_cors import CORS
 
 app = Flask(__name__,  static_folder='client', static_url_path='')
+CORS(app)
 
 @app.route("/")
 def home():
@@ -32,4 +34,4 @@ def predict_home_price():
 if __name__ == "__main__":
     print("Starting python Flask Server for Home Price Prediction...")
     util.load_saved_artifacts()
-    app.run()
+    app.run(debug=True)
