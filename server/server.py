@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify, send_from_directory
 import util
 
-app = Flask(__name__)
+app = Flask(__name__,  static_folder='client', static_url_path='')
 
 @app.route("/")
 def home():
-    return send_from_directory("static", "app.html")
+    return send_from_directory("client", "app.html")
 
 @app.route('/get_location_names')
 def get_location_names():
